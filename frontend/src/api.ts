@@ -1,8 +1,10 @@
 import { OptimizeRequest, OptimizeResponse, DemoScenario } from './types';
 
-// En production, utiliser l'URL du backend déployé
-// En développement, utiliser le proxy Vite (/api)
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+// En développement, le proxy Vite redirige /api vers localhost:8000
+// En production, on utilise directement l'URL du backend Render
+const API_BASE = import.meta.env.VITE_API_URL || (
+  import.meta.env.DEV ? '/api' : 'https://gestion-contenaire.onrender.com'
+);
 
 export async function optimizeLoading(request: OptimizeRequest): Promise<OptimizeResponse> {
   const response = await fetch(`${API_BASE}/optimize`, {
