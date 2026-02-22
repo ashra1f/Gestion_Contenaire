@@ -88,14 +88,35 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Optimiseur de Chargement</h1>
-        <p>Calculez le placement optimal de vos colis dans la remorque</p>
+        <div className="header-content">
+          <div className="header-brand">
+            <svg className="header-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48">
+                  <stop offset="0%" stopColor="#F97316" />
+                  <stop offset="100%" stopColor="#F59E0B" />
+                </linearGradient>
+              </defs>
+              <rect x="3" y="15" width="42" height="22" rx="4" fill="url(#logoGrad)" />
+              <rect x="8" y="20" width="12" height="12" rx="2" fill="white" opacity="0.9" />
+              <rect x="24" y="20" width="12" height="12" rx="2" fill="white" opacity="0.7" />
+              <circle cx="13" cy="40" r="3.5" fill="#334155" />
+              <circle cx="35" cy="40" r="3.5" fill="#334155" />
+              <path d="M6 15 L12 6 H36 L42 15" stroke="#F97316" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+              <path d="M18 3 L18 8 M24 1 L24 8 M30 3 L30 8" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+            </svg>
+            <div className="header-text">
+              <h1>Chourouk</h1>
+              <p>Optimiseur de chargement intelligent</p>
+            </div>
+          </div>
+        </div>
       </header>
 
       <div className="main-container">
         <aside className="sidebar">
           <div className="demo-section">
-            <h4>Scénarios de démo</h4>
+            <h4>Scenarios de demo</h4>
             <div className="demo-buttons">
               {Object.entries(demos).map(([id, demo]) => (
                 <button
@@ -130,7 +151,14 @@ function App() {
                 className="btn btn-primary btn-lg"
                 disabled={!isValid || loading}
               >
-                {loading ? 'Optimisation en cours...' : 'Optimiser le chargement'}
+                {loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    Optimisation en cours...
+                  </>
+                ) : (
+                  'Optimiser le chargement'
+                )}
               </button>
             </div>
           </form>
@@ -146,7 +174,7 @@ function App() {
                   className={`view-tab ${activeTab === 'results' ? 'active' : ''}`}
                   onClick={() => setActiveTab('results')}
                 >
-                  Résultats
+                  Resultats
                 </button>
                 <button
                   className={`view-tab ${activeTab === '2d' ? 'active' : ''}`}
@@ -170,8 +198,15 @@ function App() {
             </>
           ) : (
             <div className="empty-state">
-              <div className="empty-icon">📦</div>
-              <h2>Aucun résultat</h2>
+              <div className="empty-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+                  <rect x="10" y="25" width="60" height="40" rx="6" fill="#1E293B" opacity="0.15" />
+                  <rect x="18" y="32" width="18" height="18" rx="3" fill="#F97316" opacity="0.3" />
+                  <rect x="42" y="32" width="18" height="18" rx="3" fill="#F59E0B" opacity="0.3" />
+                  <path d="M15 25 L24 12 H56 L65 25" stroke="#F97316" strokeWidth="2" strokeLinecap="round" opacity="0.3" />
+                </svg>
+              </div>
+              <h2>Aucun resultat</h2>
               <p>
                 Configurez votre remorque et vos colis, puis cliquez sur "Optimiser le
                 chargement" pour voir le plan de placement.
