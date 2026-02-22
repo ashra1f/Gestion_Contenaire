@@ -118,8 +118,9 @@ export function BoxesForm({ boxes, unit, onChange }: Props) {
                 <td>
                   <button
                     type="button"
-                    className="btn btn-danger btn-sm"
+                    className="btn-remove"
                     onClick={() => removeBox(index)}
+                    title="Supprimer"
                   >
                     X
                   </button>
