@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { OptimizeResponse, Trailer, Placement, getBoxColor } from '../types';
 
 interface Props {

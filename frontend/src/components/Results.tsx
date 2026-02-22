@@ -1,4 +1,3 @@
-import React from 'react';
 import { OptimizeResponse } from '../types';
 
 interface Props {

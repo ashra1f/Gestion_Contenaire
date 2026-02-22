@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TrailerForm } from './components/TrailerForm';
 import { BoxesForm } from './components/BoxesForm';
 import { OptionsForm } from './components/OptionsForm';

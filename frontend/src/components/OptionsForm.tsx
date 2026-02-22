@@ -1,4 +1,3 @@
-import React from 'react';
 import { StackingOptions } from '../types';
 
 interface Props {
